@@ -1,0 +1,52 @@
+
+@import "@wordpress/block-library/build-style/common.css";
+@import "@wordpress/block-library/build-style/style.css";
+@import "@wordpress/block-library/build-style/theme.css";
+
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.content-wrap p {
+    margin: 1.5rem 0;
+}
+
+.wp-block-gallery .blocks-gallery-image img, .wp-block-gallery .blocks-gallery-item img, .blocks-gallery-grid .blocks-gallery-image img, .blocks-gallery-grid .blocks-gallery-item img {
+    border-radius: 0.5rem;
+}
+
+.paragraph p {
+    margin: 1rem 0;
+}
+
+.wp-block-image img {
+    margin: auto;
+}
+
+.wp-block-embed iframe {
+    margin: auto;
+}
+
+.wp-block-media-text {
+    margin: 2rem 0;
+}
+
+.wp-block-media-text__media img {
+    border-radius: 1rem;
+}
+
+.wp-block-media-text__content h4 {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.wp-block-media-text__content  p {
+    font-size: 1.15rem;
+}

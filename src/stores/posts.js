@@ -1,0 +1,47 @@
+import { writable } from "svelte/store";
+
+export const blogPosts = writable([]);
+let loaded = false;
+
+const query = `
+query getPosts {
+ posts {
+   nodes {
+     id
+     slug
+     title
+     featuredImage {
+       node {
+         mediaItemUrl
+         mediaDetails {
+           sizes {
+             sourceUrl
+             name
+           }
+         }
+       }
+     }
+   }
+ }
+}
+`;
+
+export const fetchPosts = async () => {
+    if (loaded) return;
+
+      const response = await fetch(import.meta.env.VITE_PUBLIC_WORDPRESS_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query }),
+      });
+  
+    const responseObj = await response.json();
+    const loadedPosts = responseObj.data.posts.nodes;
+    //console.log(loadedPosts);
+    blogPosts.set(loadedPosts)
+    loaded = true;
+
+      }
+fetchPosts();
