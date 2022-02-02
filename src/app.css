@@ -19,6 +19,7 @@ body {
 
 .wp-block-gallery .blocks-gallery-image img, .wp-block-gallery .blocks-gallery-item img, .blocks-gallery-grid .blocks-gallery-image img, .blocks-gallery-grid .blocks-gallery-item img {
     border-radius: 0.5rem;
+    color: inherit;
 }
 
 .paragraph p {
