@@ -19,7 +19,7 @@
             }
             `;
 
-         const response = await fetch(import.meta.env.VITE_PUBLIC_WORDPRESS_API_URL, {
+         const response = await fetch("https://mdsmx.xyz/fuga/graphql", {
            method: 'POST',
            headers: {
              'Content-Type': 'application/json',
