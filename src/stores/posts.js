@@ -37,11 +37,13 @@ export const fetchPosts = async () => {
         body: JSON.stringify({ query }),
       });
   
-    const responseObj = await response.json();
-    const loadedPosts = responseObj.data.posts.nodes;
+      if(response.ok) {
+        const responseObj = await response.json();
+        const loadedPosts = responseObj.data.posts.nodes;
     //console.log(loadedPosts);
-    blogPosts.set(loadedPosts)
-    loaded = true;
+        blogPosts.set(loadedPosts)
+        loaded = true;
+      }
 
       }
 fetchPosts();
