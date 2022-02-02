@@ -4,7 +4,6 @@
     import PageTransition from "../components/PageTransition.svelte"; 
     import { onMount } from "svelte";
 
-    export let key;
     let ready = false;
     let fecha = new Date();
   
