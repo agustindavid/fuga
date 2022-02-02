@@ -75,7 +75,7 @@
       {@html data.content}
     </div>
     {#each achievements as achievement}
-      <div class="flex flex-row mb-8 border-gray-900 border-b pb-8">
+      <div class="flex flex-col md:flex-row mb-8 border-gray-900 border-b pb-8">
         <div class="basis-1/3">
           <h2 class="font-ubuntu text-3xl text-fuga-pink">{achievement.aspectos.titulo}</h2>
         </div>

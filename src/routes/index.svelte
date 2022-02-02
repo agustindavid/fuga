@@ -151,7 +151,7 @@
       </div>
 
       <div class="bg-[url('http://fuga.local/wp-content/uploads/2022/01/17545.jpg')] bg-cover bg-opacity-50 text-gray-800 py-16 bg-center">
-        <div class="container mx-auto px-16">
+        <div class="container mx-auto px-1 md:px-16">
           <Carousel slides={testimonios} type="testimony"/>
         </div>
       </div>

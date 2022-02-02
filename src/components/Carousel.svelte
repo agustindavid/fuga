@@ -19,7 +19,7 @@ export let type;
 		<button
 			type="button"
 			slot="prev"
-			class="absolute top-2/4 left-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
+			class="absolute top-0 md:top-2/4 left-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
 			on:click={showPrevPage}
 		><span>&LongLeftArrow;</span> 
 		</button>
@@ -34,7 +34,7 @@ export let type;
 
 		{#if type=='testimony'}
 			{#each slides as testimonio}
-				<div class="flex flex-row items-center px-16">
+				<div class="flex flex-col md:flex-row items-center px-1 md:px-16">
 					<div class="basis-4/12">
 						<img src="{testimonio.image.mediaItemUrl}" alt="bici" class=" w-3/5 mx-auto rounded-full border-8  border-white">
 					</div>
@@ -50,7 +50,7 @@ export let type;
 		<button
 			type="button"
 			slot="next"
-			class="absolute top-2/4 right-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
+			class="absolute top-0 md:top-2/4 right-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
 			on:click={showNextPage}
 		><span>&LongRightArrow;</span>
 		</button>
