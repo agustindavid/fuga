@@ -1,5 +1,5 @@
 <script context="module">
-    import Intro from '../components/intro.svelte';
+    import Intro from '../components/Intro.svelte';
     import Carousel from '../components/Carousel.svelte';
     import Who from '../components/Who.svelte';
     import { slide } from 'svelte/transition';

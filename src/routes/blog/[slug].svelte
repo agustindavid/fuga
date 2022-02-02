@@ -1,8 +1,6 @@
 <script context="module">
 
-	export const prerender = true;
-   
-    export async function load({ url, params } ) {
+       export async function load({ url, params } ) {
 
         const slug= params.slug;
         
