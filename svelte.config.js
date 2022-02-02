@@ -20,7 +20,9 @@ const config = {
       },
     },
 
-    router: false,
+    browser : {
+      router: false,
+    }
   },
 };
 
