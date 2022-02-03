@@ -4,6 +4,7 @@ import { fade, fly } from 'svelte/transition';
 
     export let y;
     export let lastY=0;
+    let navOpen = false;
     $: innerHeight = 0;
     
     function getDirection(y) {
@@ -17,6 +18,11 @@ import { fade, fly } from 'svelte/transition';
     }
 
     $: scrollDirection = getDirection(y);
+
+
+    function toggleMenu(){
+      navOpen = !navOpen;
+    }
 </script>
 
 <svelte:window bind:scrollY={y} bind:innerHeight />
@@ -29,21 +35,27 @@ import { fade, fly } from 'svelte/transition';
       </div>
 
     </div>
-    <div class="block lg:hidden">
-      <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+    <div class="block lg:hidden" class:change={navOpen} on:click={toggleMenu}>
+      <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white">
         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
       </button>
     </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-      <div class="text-sm lg:flex-grow">
-        <a class="block mt-4 text-base lg:inline-block lg:mt-0 text-white hover:text-pink-200 mr-4" href="/">Home</a>
-        <a class="block mt-4 text-base lg:inline-block lg:mt-0 text-white hover:text-pink-200 mr-4" href="/how-it-works">Como Funciona</a>
-        <a class="block mt-4 text-base lg:inline-block lg:mt-0 text-white hover:text-pink-200 mr-4" href="/about">Bio</a>
-        <a class="block mt-4 text-base lg:inline-block lg:mt-0 text-white hover:text-pink-200 mr-4" href="/blog">Blog</a>
+    <div class="w-full lg:flex-grow flex justify-around lg:items-center flex-col lg:flex-row lg:h-auto lg:w-auto menu-wrap fixed lg:relative top-16 transition-all  -translate-x-full  lg:top-0 bg-fuga-pink z-10 h-[calc(100vh_-_80px)] lg:translate-x-0 left-0" class:open={navOpen}>
+      <div class="text-sm lg:flex-grow ">
+        <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/">Home</a>
+        <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/how-it-works">Como Funciona</a>
+        <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/about">Bio</a>
+        <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/blog">Blog</a>
       </div>
-      <div>
-        <a href="/" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Contacto</a>
+      <div class="text-center">
+        <a href="/" class="inline-block text-2xl lg:text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Contacto</a>
       </div>
     </div>
   </nav>
   {/if}
+
+  <style>
+    .open {
+      transform: translateX(0) !important;
+    }
+  </style>

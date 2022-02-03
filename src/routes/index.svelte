@@ -96,7 +96,7 @@
     import { onMount } from 'svelte';
     export let slides;
     export let quienesSomos;
-    export let content;
+    //export let content;
     export let testimonios;
     export let sponsors;
     const poster = 'http://chelini.local/wp-content/uploads/2021/12/2022-Cannondale-Jekyll-2-First-Look-04861-1200x630.jpg';
@@ -127,7 +127,7 @@
       <div class="container mx-auto py-12 px-16">
         <svelte:component this={VideoPlayer} poster={poster} source={source} />
       </div>
-      <div class="container mx-auto">
+      <!-- <div class="container mx-auto">
         <div>
          <h1>
           que ofrecemos
@@ -145,7 +145,7 @@
         </div>
 
       </div>
-
+ -->
       <div class="container mx-auto mt-16">
         <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
       </div>
