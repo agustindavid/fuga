@@ -150,7 +150,7 @@
         <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
       </div>
 
-      <div class="bg-[url('http://fuga.local/wp-content/uploads/2022/01/17545.jpg')] bg-cover bg-opacity-50 text-gray-800 py-16 bg-center">
+      <div class="bg-[url('http://mdsmx.xyz/fuga/wp-content/uploads/2022/01/17545.jpg')] bg-cover bg-opacity-50 text-gray-800 py-16 bg-center">
         <div class="container mx-auto md:px-16 px-4">
           <Carousel slides={testimonios} type="testimony"/>
         </div>
