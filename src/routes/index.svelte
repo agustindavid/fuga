@@ -116,7 +116,7 @@
     <Intro/>
 
     <div class="foreground">
-      <div class="container mx-auto py-12">
+      <div class="container mx-auto py-12 px-4">
         <Who cta={quienesSomos.cta} texto={quienesSomos.texto} titulo={quienesSomos.titulo} urlImagen={quienesSomos.imagen}/>
       </div>
       
@@ -146,19 +146,24 @@
 
       </div>
  -->
-      <div class="container mx-auto mt-16">
+      <div class="container mx-auto mt-16 px-4">
         <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
       </div>
 
       <div class="bg-[url('http://fuga.local/wp-content/uploads/2022/01/17545.jpg')] bg-cover bg-opacity-50 text-gray-800 py-16 bg-center">
-        <div class="container mx-auto px-1 md:px-16">
+        <div class="container mx-auto md:px-16 px-4">
           <Carousel slides={testimonios} type="testimony"/>
         </div>
       </div>
 
-      <div class="container mx-auto my-16">
+      <div class="container mx-auto my-16 px-4">
         <h1 class="font-ubuntu content-center text-6xl font-medium text-fuga-pink mt-16 mb-2" >Blog</h1>
+        <div class=" -mx-4 ">
         <PostsList posts={$blogPosts} type="" limit="2"/>
+        </div>
+        <div class="mt-8">
+          <a href="/blog" alt="blog" class=" hover:bg-white hover:text-fuga-pink transition-all border  border-fuga-pink  bg-fuga-pink font-medium text-white py-2 px-4 font-ubuntu uppercase rounded-lg group">Ver más<span class="group-hover:ml-4 duration-150  ml-2 " >&LongRightArrow;</span></a>
+        </div>
       </div>
       
       <div class="sponsors bg-gray-100  text-center text-gray-700 my-16  py-16 text-6xl">
@@ -166,7 +171,7 @@
         <div class="container mx-auto">
           <div class="flex flex-row items-center">
               {#each sponsors as sponsor}
-                <div class=" basis-4/12">
+                <div class=" basis-4/12 px-2 lg:px-0">
                     <img src="{sponsor.logo.mediaItemUrl}" alt="" class=" w-auto max-h-24 mx-auto ">
                 </div>
               {/each}

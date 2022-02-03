@@ -27,12 +27,12 @@
                     <BigPost post={post} />
                 </div>
             {:else}
-                <div class=" basis-1/2 px-4 my-4">
+                <div class="lg:basis-1/2 basis-full px-4 my-4">
                     <Post post={post} />
                 </div>
             {/if}
         {:else}
-            <div class=" basis-1/2 my-4 px-4">
+            <div class=" lg:basis-1/2 basis-full my-4 px-4">
                 <Post post={post} />
             </div>
         {/if}
