@@ -7,8 +7,8 @@
 
 <div class="flex md:flex-row flex-col-reverse ">
     <div class="w-full  md:w-1/2  pr-12 self-center">
-        <h2 class="font-ubuntu text-4xl text-fuga-pink mb-8 font-medium mt-4">{titulo}</h2>
-        <div class="text-xl paragraph">
+        <h2 class="font-ubuntu text-5xl text-fuga-pink mb-8 font-medium mt-4">{titulo}</h2>
+        <div class="text-2xl paragraph">
             {@html texto}
         </div>
         <div class="mt-8">
