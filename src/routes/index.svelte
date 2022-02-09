@@ -99,9 +99,9 @@
     //export let content;
     export let testimonios;
     export let sponsors;
-    const poster = 'http://chelini.local/wp-content/uploads/2021/12/2022-Cannondale-Jekyll-2-First-Look-04861-1200x630.jpg';
+    const poster = 'http://mdsmx.xyz/chelini/wp-content/uploads/2021/12/2022-Cannondale-Jekyll-2-First-Look-04861-1200x630.jpg';
     const source = [
-    'http://chelini.local/wp-content/uploads/2021/12/pexels-dmitry-marchenkov-10452536.mp4',
+    'http://mdsmx.xyz/chelini/wp-content/uploads/2021/12/pexels-dmitry-marchenkov-10452536.mp4',
     ];
 
     let VideoPlayer
@@ -166,23 +166,35 @@
         </div>
       </div>
       
-      <div class="sponsors bg-gray-100  text-center text-gray-700 my-16  py-16 text-6xl">
+      <div class="sponsors bg-gray-100  text-center text-gray-700 mt-16  py-16 text-6xl">
         <h2 class=" font-ubuntu font-medium text-5xl text-fuga-pink mb-16">Nuestros patrocinantes:</h2>
         <div class="container mx-auto">
           <div class="flex flex-row items-center">
               {#each sponsors as sponsor}
                 <div class=" basis-4/12 px-2 lg:px-0">
-                    <img src="{sponsor.logo.mediaItemUrl}" alt="" class=" w-auto max-h-24 mx-auto ">
+                    <img src="{sponsor.logo.mediaItemUrl}" alt="" class=" w-auto max-h-16  mx-auto ">
                 </div>
               {/each}
-            </div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14782.143259458944!2d-101.0263289!3d22.1436672!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1013c5568b179dfa!2sPlaza%20Cordillera!5e0!3m2!1sen!2smx!4v1642406002361!5m2!1sen!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" title="map"></iframe>
+      <div class="relative">
+        <div class="container mx-auto">
+          <div class="flex flex-row">
+            <div class=" basis-1/2">
+              <h2>Nuestra ubicación</h2>
+              <p>Plaza Cordillera</p>
+              <p>Plaza Cordillera</p>
+            <p>Plaza Cordillera</p>
+            </div>
+            <div class="basis-1/2">
+              <iframe class="  " src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14782.143259458944!2d-101.0263289!3d22.1436672!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1013c5568b179dfa!2sPlaza%20Cordillera!5e0!3m2!1sen!2smx!4v1642406002361!5m2!1sen!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" title="map"></iframe>
+            </div>
+          </div>
+        </div>
       </div>
-</div>
+    </div>
 
 <style>
   .foreground {
