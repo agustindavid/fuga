@@ -32,6 +32,12 @@
           mediaItemUrl
         }
       }
+      videoHome {
+        mediaItemUrl
+      }
+      videoPoster {
+        mediaItemUrl
+      }
     }
     sponsors {
       sponsors {
@@ -70,6 +76,8 @@
         const responseObj = await response.json();
         const slides = responseObj.data.pageBy.slidesHome.slides;
         const quienesSomos = responseObj.data.pageBy.home.quienesSomos;
+        const videoHome = responseObj.data.pageBy.home.videoHome.mediaItemUrl;
+        const videoPoster = responseObj.data.pageBy.home.videoPoster.mediaItemUrl;
         const testimonios = responseObj.data.pageBy.testimonios.testimonio;
         const sponsors = responseObj.data.pageBy.sponsors.sponsors;
         const content = responseObj.data.pageBy.content;
@@ -81,6 +89,8 @@
                       content,
                       testimonios,
                       sponsors,
+                      videoHome,
+                      videoPoster,
                   }
               };
           }
@@ -96,15 +106,15 @@
     import { onMount } from 'svelte';
     export let slides;
     export let quienesSomos;
-    //export let content;
+    export let content;
     export let testimonios;
     export let sponsors;
-    const poster = 'http://mdsmx.xyz/chelini/wp-content/uploads/2021/12/2022-Cannondale-Jekyll-2-First-Look-04861-1200x630.jpg';
-    const source = [
-    'http://mdsmx.xyz/chelini/wp-content/uploads/2021/12/pexels-dmitry-marchenkov-10452536.mp4',
-    ];
+    export let videoPoster;
+    export let videoHome;
 
     let VideoPlayer
+    let fecha = new Date();
+
     
     onMount(async () => {
 		  VideoPlayer = (await import('svelte-video-player')).default;
@@ -119,50 +129,41 @@
       <div class="container mx-auto py-12 px-4">
         <Who cta={quienesSomos.cta} texto={quienesSomos.texto} titulo={quienesSomos.titulo} urlImagen={quienesSomos.imagen}/>
       </div>
-      
-      <div class="">
-        <Carousel slides={slides} type="images"/>
-      </div>
 
+    <div class=" bg-gray-50 ">  
       <div class="container mx-auto py-12 px-16">
-        <svelte:component this={VideoPlayer} poster={poster} source={source} />
+        <svelte:component this={VideoPlayer} poster={videoPoster} source={videoHome} />
       </div>
-      <!-- <div class="container mx-auto">
-        <div>
-         <h1>
-          que ofrecemos
-          </h1>
-        </div>
+    </div>
 
-        <div>
+    <div class="container mx-auto">
+        <div class="my-16 text-black" >
           {@html content}
         </div>
+    </div>
 
-        <div>
-          <h1>
-          para quien es
-          </h1>
-        </div>
-
-      </div>
- -->
-      <div class="container mx-auto mt-16 px-4">
-        <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
-      </div>
 
       <div class=" bg-gray-50 text-gray-800 py-16 bg-center">
+        
+      <div class="container mx-auto mt-4 px-4">
+        <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
+      </div>
         <div class="container mx-auto md:px-16 px-4">
           <Carousel slides={testimonios} type="testimony"/>
         </div>
       </div>
+<!-- 
+      <div class="">
+        <Carousel slides={slides} type="images"/>
+      </div> -->
 
       <div class="container mx-auto my-16 px-4">
         <h1 class="font-ubuntu content-center text-6xl font-medium text-fuga-pink mt-16 mb-2" >Blog</h1>
         <div class=" -mx-4 ">
-        <PostsList posts={$blogPosts} type="" limit="2"/>
+          <PostsList posts={$blogPosts} type="" limit="3"/>
         </div>
-        <div class="mt-8">
-          <a href="/blog" alt="blog" class=" hover:bg-white hover:text-fuga-pink transition-all border  border-fuga-pink  bg-fuga-pink font-medium text-white py-2 px-4 font-ubuntu uppercase rounded-lg group">Ver más<span class="group-hover:ml-4 duration-150  ml-2 " >&LongRightArrow;</span></a>
+        <div class="mt-8 text-center">
+          <a href="/blog" alt="blog" class=" hover:bg-white hover:text-fuga-pink transition-all border  border-fuga-pink  bg-fuga-pink font-medium text-white py-2 px-4 font-ubuntu uppercase rounded-lg group">Ver más del blog<span class="group-hover:ml-4 duration-150  ml-2 " >&LongRightArrow;</span></a>
         </div>
       </div>
       
@@ -180,13 +181,15 @@
       </div>
 
       <div class="relative">
-        <div class="container mx-auto">
+        <div class="">
           <div class="flex flex-row">
-            <div class=" basis-1/2">
-              <h2>Nuestra ubicación</h2>
-              <p>Plaza Cordillera</p>
-              <p>Plaza Cordillera</p>
-            <p>Plaza Cordillera</p>
+            <div class=" basis-1/2 flex justify-end bg-fuga-pink ">
+              <div class="self-center text-white w-full 2xl:max-w-[768px] xl:max-w-[640px] lg:max-w-[512px] md:max-w-[384px] sm:max-w-[320px]">
+                <h2 class="font-ubuntu text-3xl mb-6" >Dónde estamos ubicados</h2>
+                <p class="my-4" >Plaza Cordillera, Local 3</p>
+                <p class="my-4" >Cordillera Karakorunm 410, Lomas 3a. Secc.78216 San Luis Potosí City</p>
+                <p class="my-4" >San Luis Potosí, SLP</p>
+              </div>
             </div>
             <div class="basis-1/2">
               <iframe class="  " src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14782.143259458944!2d-101.0263289!3d22.1436672!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1013c5568b179dfa!2sPlaza%20Cordillera!5e0!3m2!1sen!2smx!4v1642406002361!5m2!1sen!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" title="map"></iframe>
@@ -194,6 +197,11 @@
           </div>
         </div>
       </div>
+      <footer class=" ">
+        <div class="flex flex-wrap justify-center text-center py-8 text-white bg-fuga-pink w-full">
+          <h4>Fuga Ciclismo Inteligente {fecha.getFullYear()}</h4>
+        </div>
+      </footer>
     </div>
 
 <style>

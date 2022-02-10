@@ -68,11 +68,17 @@
     <img class="rounded-lg"  src="{data.featuredImage.node.mediaItemUrl}" alt="">
   </div>
   <div class="mx-auto w-10/12">
-    <div>
-      <h1 class="font-ubuntu content-center text-center text-4xl text-fuga-pink my-16" >Resumen</h1>
-    </div>
-    <div class="text-center text-xl my-16">
-      {@html data.content}
+    <div class="flex flex-row  my-16">
+      <div class="basis-4/12">
+        <h2 class="font-ubuntu content-center text-left text-4xl text-fuga-pink">Jorge Lino</h2>
+        <p class=" mt-2">Ciclista Profesional, Nutriólogo, Coach certificado</p>
+        <p class="mt-4" ><a href="https://instagram.com/fugaciclismointeligente" target="_blank" class=" text-black text-3xl "><i class="fab fa-instagram"></i></a></p>
+      </div>
+      <div class="basis-8/12">
+        <div class="text-left text-2xl">
+          {@html data.content}
+        </div>
+      </div>
     </div>
     {#each achievements as achievement}
       <div class="flex flex-col md:flex-row mb-8 border-gray-900 border-b pb-8">

@@ -32,7 +32,7 @@
     <slot></slot>
 </PageTransition>
 
-<footer class=" hidden ">
+<footer class=" ">
   <div class="flex flex-wrap justify-center text-center py-8 text-white bg-fuga-pink w-full">
     <h4>Fuga Ciclismo Inteligente {fecha.getFullYear()}</h4>
   </div>

@@ -50,7 +50,7 @@ import { fade, fly } from 'svelte/transition';
       <div class="text-center flex items-center ">
         <a href="https://instagram.com/fugaciclismointeligente" target="_blank" class=" text-white text-xl "><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/5244446674907" target="_blank" class=" text-white text-xl mx-3 hover:text-pink-200 "><i class="fab fa-whatsapp"></i></a>
-        <a href="/" class=" inline-block text-2xl lg:text-sm px-4 py-1 leading-none border rounded text-white border-white hover:border-transparent hover:text-fuga-pink hover:bg-white mt-4 lg:mt-0">Contacto</a>
+        <a href="/contact" class=" inline-block text-2xl lg:text-sm px-4 py-1 leading-none border rounded text-white border-white hover:border-transparent hover:text-fuga-pink hover:bg-white mt-4 lg:mt-0">Contacto</a>
       </div>
     </div>
   </nav>
