@@ -1,4 +1,5 @@
 <script context="module">
+  export const prerender = true;
       import PageTransition from "../components/PageTransition.svelte"; 
       import { scale } from "svelte/transition";
       import { quintOut } from "svelte/easing";

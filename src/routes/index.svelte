@@ -74,7 +74,6 @@
   
           if (response.ok) {
         const responseObj = await response.json();
-        const slides = responseObj.data.pageBy.slidesHome.slides;
         const quienesSomos = responseObj.data.pageBy.home.quienesSomos;
         const videoHome = responseObj.data.pageBy.home.videoHome.mediaItemUrl;
         const videoPoster = responseObj.data.pageBy.home.videoPoster.mediaItemUrl;
@@ -84,7 +83,6 @@
   
               return {
                   props: {
-                      slides,
                       quienesSomos,
                       content,
                       testimonios,
@@ -104,7 +102,6 @@
 
 <script>
     import { onMount } from 'svelte';
-    export let slides;
     export let quienesSomos;
     export let content;
     export let testimonios;
