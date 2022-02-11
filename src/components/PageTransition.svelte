@@ -1,8 +1,8 @@
 <script>
   import { fly } from 'svelte/transition';
-  import { onMount, onDestroy } from 'svelte';
+  //import { onMount, onDestroy } from 'svelte';
 
-  let show = false;
+  /* let show = false;
 
   onMount(()=> {
     show = true;
@@ -14,16 +14,18 @@
 
   onDestroy(()=> {
     show = false;
-  })
+  }) */
+
+  export let url="";
+  console.log(url)
+  const pageTransitionDuration = 500;
+
 </script>
 
-{#if show}
   <div in:fly="{{ x: -50, duration: 250}}" out:fly="{{ x: -50, duration: 250}}"
     >
     <slot/>
   </div>
-{/if}
-
 <style>
   div {
     position: relative;

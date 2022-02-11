@@ -1,4 +1,5 @@
 <script context="module">
+    
     const query = `
     query getHome {
         pageBy(uri: "how-it-works") {

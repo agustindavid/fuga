@@ -64,6 +64,7 @@
     export let achievements;
 </script>
 
+
 <div class="container mx-auto">
   <div class="mb-16 mt-24">
     <img class="rounded-lg"  src="{data.featuredImage.node.mediaItemUrl}" alt="">
