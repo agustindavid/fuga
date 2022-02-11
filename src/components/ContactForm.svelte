@@ -1,24 +1,20 @@
-<script>
-    import { form, field } from 'svelte-forms';
-    import { required } from 'svelte-forms/validators';
-  
-    const name = field('name', '', [required()]);
-    const password = field('password', 'my_password', [required()]);
-    const myForm = form(name, password);
-  </script>
-  
-  
-  <section>
-    <input type="text" bind:value={$name.value} />
-    <input type="password" bind:value={$password.value} />
-  
-    <button on:click={name.reset}>Reset name</button>
-    <button on:click={password.reset}>Reset password</button>
-    <button on:click={myForm.reset}>Reset form</button>
-  </section>
-
-<style>
-    input {
-        border: 1px solid #666;
-    }
-</style>
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Your Name: <input type="text" name="name" /></label>   
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Your Role: <select name="role[]" multiple>
+      <option value="leader">Leader</option>
+      <option value="follower">Follower</option>
+    </select></label>
+  </p>
+  <p>
+    <label>Message: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
