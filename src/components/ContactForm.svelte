@@ -10,6 +10,7 @@
       <option value="leader">Leader</option>
       <option value="follower">Follower</option>
       <option value="aja">Aja</option>
+      <option value="aj2a">Aj2a</option>
     </select></label>
   </p>
   <p>
