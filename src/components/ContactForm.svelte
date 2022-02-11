@@ -1,4 +1,4 @@
-<form name="contact" method="POST" data-netlify="true">
+<form name="contact" netlify>
   <p>
     <label>Your Name: <input type="text" name="name" /></label>   
   </p>
@@ -9,6 +9,7 @@
     <label>Your Role: <select name="role[]" multiple>
       <option value="leader">Leader</option>
       <option value="follower">Follower</option>
+      <option value="aja">Aja</option>
     </select></label>
   </p>
   <p>
