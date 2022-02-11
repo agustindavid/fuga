@@ -22,10 +22,12 @@
 
 </script>
 
+{#key url}
   <div in:fly="{{ x: -50, duration: 250}}" out:fly="{{ x: -50, duration: 250}}"
     >
     <slot/>
   </div>
+{/key}
 <style>
   div {
     position: relative;
