@@ -142,7 +142,7 @@
 
       <div class=" bg-gray-50 text-gray-800 py-16 bg-center">
         
-      <div class="container mx-auto mt-4 px-4">
+      <div class="container mx-auto mt-4">
         <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
       </div>
         <div class="container mx-auto md:px-16 px-4">

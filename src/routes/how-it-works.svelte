@@ -43,7 +43,7 @@
 </script>
 
 <div class="container mx-auto">
-    <h2 class="font-ubuntu text-2xl md:text-6xl text-fuga-pink font-medium  lg:w-3/5 lg:my-20 mt-20 mb-8 px-4">
+    <h2 class="font-ubuntu text-2xl md:text-6xl text-fuga-pink font-medium  lg:w-3/5 lg:my-20 mt-20 mb-8">
         Entrenamientos y planes alimenticios personalizados, basados en análisis y enfocados en lograr objetivos.
     </h2>
 
