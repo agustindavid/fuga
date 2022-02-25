@@ -14,7 +14,7 @@
     import '../app.css';
     import PageTransition from "../components/PageTransition.svelte"; 
     import { onMount } from "svelte";
-    //export let url;
+    export let url;
 
     let ready = false;
     let fecha = new Date();
@@ -29,7 +29,9 @@
 
 <Nav/>
 
+<PageTransition {url}>
     <slot></slot>
+</PageTransition>
 
 <footer class=" ">
   <div class="flex flex-wrap justify-center text-center py-8 text-white bg-fuga-pink w-full">

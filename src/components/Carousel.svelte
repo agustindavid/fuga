@@ -19,7 +19,7 @@ export let type;
 		<button
 			type="button"
 			slot="prev"
-			class="absolute top-0 md:top-2/4 left-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
+			class="absolute top-1/4  md:top-2/4 left-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
 			on:click={showPrevPage}
 		><span>&LongLeftArrow;</span> 
 		</button>
@@ -50,7 +50,7 @@ export let type;
 		<button
 			type="button"
 			slot="next"
-			class="absolute top-0 md:top-2/4 right-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
+			class="absolute top-1/4 md:top-2/4 right-0 z-10 bg-fuga-pink text-white opacity-40 rounded-md p-2 ml-2 mr-2 hover:opacity-100 transition-all text-lg"
 			on:click={showNextPage}
 		><span>&LongRightArrow;</span>
 		</button>

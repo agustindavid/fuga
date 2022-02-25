@@ -66,12 +66,12 @@
 
 
 <div class="container mx-auto">
-  <div class="mb-16 mt-24">
-    <img class="rounded-lg"  src="{data.featuredImage.node.mediaItemUrl}" alt="">
+  <div class="mb-16 mt-16  ">
+    <img class="md:rounded-2xl"  src="{data.featuredImage.node.mediaItemUrl}" alt="">
   </div>
-  <div class="mx-auto w-10/12">
-    <div class="flex flex-row  my-16">
-      <div class="basis-4/12">
+  <div class="mx-auto w-12/12 px-4 lg:w-10/12">
+    <div class="md:flex md:flex-row  my-16">
+      <div class="basis-4/12 mb-8 md:mb-0">
         <h2 class="font-ubuntu content-center text-left text-4xl text-fuga-pink">Jorge Lino</h2>
         <p class=" mt-2">Ciclista Profesional, Nutriólogo, Coach certificado</p>
         <p class="mt-4" ><a href="https://instagram.com/fugaciclismointeligente" target="_blank" class=" text-black text-3xl "><i class="fab fa-instagram"></i></a></p>

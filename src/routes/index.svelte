@@ -128,7 +128,7 @@
       </div>
 
     <div class=" bg-gray-50 ">  
-      <div class="container mx-auto py-12 px-16">
+      <div class="container mx-auto py-12 md:px-16 px-8">
         <svelte:component this={VideoPlayer} poster={videoPoster} source={videoHome} />
       </div>
     </div>
@@ -143,7 +143,7 @@
       <div class=" bg-gray-50 text-gray-800 py-16 bg-center">
         
       <div class="container mx-auto mt-4">
-        <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium">Historias Fuga</h2>
+        <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium px-4">Historias Fuga</h2>
       </div>
         <div class="container mx-auto md:px-16 px-4">
           <Carousel slides={testimonios} type="testimony"/>
@@ -179,8 +179,8 @@
 
       <div class="relative">
         <div class="">
-          <div class="flex flex-row">
-            <div class=" basis-1/2 flex justify-end bg-fuga-pink ">
+          <div class="md:flex">
+            <div class=" px-4 py-8 md:basis-1/2 flex justify-end bg-fuga-pink ">
               <div class="self-center text-white w-full 2xl:max-w-[768px] xl:max-w-[640px] lg:max-w-[512px] md:max-w-[384px] sm:max-w-[320px]">
                 <h2 class="font-ubuntu text-3xl mb-6" >Dónde estamos ubicados</h2>
                 <p class="my-4" >Plaza Cordillera, Local 3</p>
@@ -188,7 +188,7 @@
                 <p class="my-4" >San Luis Potosí, SLP</p>
               </div>
             </div>
-            <div class="basis-1/2">
+            <div class="basis-full md:basis-1/2">
               <iframe class="  " src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14782.143259458944!2d-101.0263289!3d22.1436672!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1013c5568b179dfa!2sPlaza%20Cordillera!5e0!3m2!1sen!2smx!4v1642406002361!5m2!1sen!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" title="map"></iframe>
             </div>
           </div>
