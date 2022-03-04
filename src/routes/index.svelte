@@ -169,7 +169,7 @@
         <div class="container mx-auto">
           <div class="flex flex-row items-center">
               {#each sponsors as sponsor}
-                <div class=" basis-4/12 px-2 lg:px-4">
+                <div class=" basis-4/12 px-2 lg:px-8">
                     <img src="{sponsor.logo.mediaItemUrl}" alt="" class=" w-auto max-h-16  mx-auto ">
                 </div>
               {/each}
