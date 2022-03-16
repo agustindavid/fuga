@@ -20,7 +20,6 @@
     </div>
     <div class="basis-4/12 md:basis-3/12 items-center border-0 border-slate-500 lg:border-l-0 group-hover:bg-opacity-100 transition duration-300 bg-opacity-5 p-4 bg-fuga-pink rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none">     
         <h2 class="font-ubuntu text-3xl"><a href="/blog/{post.slug}">{post.title}</a></h2>
-        <p>Este es el excerpt</p>
         <a href="/blog/{post.slug}"  >
             Leer <span class="group-hover:ml-1 transition duration-75 " >&LongRightArrow;</span>
         </a>
