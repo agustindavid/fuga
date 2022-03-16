@@ -17,7 +17,6 @@
     {/if}
     <div class="group-hover:bg-opacity-100 transition duration-300 bg-opacity-5 p-4 bg-fuga-pink rounded-b-xl ">
         <h2 class="font-ubuntu text-3xl "><a href="/blog/{post.slug}">{post.title}</a></h2>
-        <p>Este es el excerpt</p>
         <a href="/blog/{post.slug}">
             Leer <span class="group-hover:ml-1 transition duration-75 " >&LongRightArrow;</span>
         </a>
