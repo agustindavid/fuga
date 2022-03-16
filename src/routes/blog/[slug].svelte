@@ -13,6 +13,12 @@
                     featuredImage {
                         node {
                             mediaItemUrl
+                            mediaDetails {
+                                sizes {
+                                    sourceUrl
+                                    name
+                                }
+                            }
                         }
                     }
                 }
@@ -51,17 +57,26 @@
 
    
     export let post;
+    export let sizes=post.featuredImage.node.mediaDetails.sizes;
+    const image = sizes.filter(function(size){
+        if(size.name=='single-post-image'){
+            return size;
+        }
+    });
     export let slug;
+
 
     console.log(slug);
 
     console.log(post)
 </script>
 
-<img class=" h-screen w-full object-cover " src="{post.featuredImage.node.mediaItemUrl}" alt="">
+<div class="container mx-auto mb-8 mt-24">
+    <img class="w-100 rounded-2xl object-cover " src="{image[0].sourceUrl}" alt="">
+</div>
 <div class="container mx-auto content-wrap">
-    <h1 class="font-ubuntu content-center text-center text-4xl text-fuga-pink my-16">{post.title}</h1>
-    <div class=" w-3/4 mx-auto  text-xl">
+    <h1 class="font-ubuntu content-center text-center  font-medium text-4xl text-fuga-pink mb-8 mt-0">{post.title}</h1>
+    <div class=" w-3/4 leading-8 mx-auto  text-xl">
         {@html post.content}
     </div>
 </div>
