@@ -3,6 +3,8 @@
       import PageTransition from "../components/PageTransition.svelte"; 
       import { scale } from "svelte/transition";
       import { quintOut } from "svelte/easing";
+      import SEO from "../components/SEO/index.svelte"
+
 
     
     const query = `
@@ -62,8 +64,18 @@
 <script>
     export let data;
     export let achievements;
+
+    let title = 'Bio';
+
+
+    const seoProps = {
+    title,
+    slug: '',
+  };
+    
 </script>
 
+<SEO {...seoProps} />
 
 <div class="container mx-auto">
   <div class="mb-16 mt-16  ">

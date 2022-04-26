@@ -43,7 +43,7 @@ import { fade, fly } from 'svelte/transition';
     <div class="w-full lg:flex-grow flex justify-around lg:items-center flex-col lg:flex-row lg:h-auto lg:w-auto menu-wrap fixed lg:relative top-16 transition-all  -translate-x-full  lg:top-0 bg-fuga-pink z-10 h-[calc(100vh_-_80px)] lg:translate-x-0 left-0" class:open={navOpen}>
       <div class="text-sm lg:flex-grow ">
         <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/">Home</a>
-        <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/how-it-works">Como Funciona</a>
+        <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/how-it-works">Cómo Funciona</a>
         <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/about">Bio</a>
         <a class="block mt-4 lg:text-base text-2xl lg:inline-block lg:mt-0 text-white hover:text-pink-200 lg:mr-4 mr-0 text-center lg:text-left" href="/blog">Blog</a>
       </div>

@@ -5,6 +5,7 @@
     import { slide } from 'svelte/transition';
     import PostsList from "../components/PostsList.svelte";
     import { blogPosts } from "../stores/posts";
+    import SEO from "../components/SEO/index.svelte"
     
 
     const query = `
@@ -75,8 +76,8 @@
           if (response.ok) {
         const responseObj = await response.json();
         const quienesSomos = responseObj.data.pageBy.home.quienesSomos;
-        const videoHome = responseObj.data.pageBy.home.videoHome.mediaItemUrl;
-        const videoPoster = responseObj.data.pageBy.home.videoPoster.mediaItemUrl;
+        //const videoHome = responseObj.data.pageBy.home.videoHome.mediaItemUrl;
+        //const videoPoster = responseObj.data.pageBy.home.videoPoster.mediaItemUrl;
         const testimonios = responseObj.data.pageBy.testimonios.testimonio;
         const sponsors = responseObj.data.pageBy.sponsors.sponsors;
         const content = responseObj.data.pageBy.content;
@@ -87,8 +88,6 @@
                       content,
                       testimonios,
                       sponsors,
-                      videoHome,
-                      videoPoster,
                   }
               };
           }
@@ -106,8 +105,6 @@
     export let content;
     export let testimonios;
     export let sponsors;
-    export let videoPoster;
-    export let videoHome;
 
     let VideoPlayer
     let fecha = new Date();
@@ -116,8 +113,19 @@
     onMount(async () => {
 		  VideoPlayer = (await import('svelte-video-player')).default;
 	  });
+
+    let title = 'Home';
+
+
+    const seoProps = {
+    title,
+    slug: '',
+  };
 </script>
 
+
+
+<SEO {...seoProps} />
 
 
     <Intro/>
@@ -131,7 +139,7 @@
       <div class="container mx-auto py-12 md:px-16 px-8">
         <!-- <svelte:component this={VideoPlayer} poster={videoPoster} source={videoHome} /> -->
         <div style="padding:56.25% 0 0 0;position:relative;">
-          <iframe src="https://player.vimeo.com/video/685761108?h=afbad10175" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+          <iframe title="video" src="https://player.vimeo.com/video/685761108?h=afbad10175" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
           </iframe>
         </div>
         <script src="https://player.vimeo.com/api/player.js"></script>
