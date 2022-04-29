@@ -26,7 +26,11 @@ query getPosts {
 }
 `;
 
+
+
+
 export const fetchPosts = async () => {
+  try {
     if (loaded) return;
 
       const response = await fetch("https://mdsmx.xyz/fuga/graphql", {
@@ -36,6 +40,8 @@ export const fetchPosts = async () => {
         },
         body: JSON.stringify({ query }),
       });
+
+  
   
       if(response.ok) {
         const responseObj = await response.json();
@@ -44,6 +50,9 @@ export const fetchPosts = async () => {
         blogPosts.set(loadedPosts)
         loaded = true;
       }
+    } catch {
+      return;
+    }
 
       }
 fetchPosts();

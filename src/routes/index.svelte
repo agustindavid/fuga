@@ -5,8 +5,9 @@
     import { slide } from 'svelte/transition';
     import PostsList from "../components/PostsList.svelte";
     import { blogPosts } from "../stores/posts";
-    import SEO from "../components/SEO/index.svelte"
-    
+    import SEO from "../components/SEO/index.svelte";
+    import axios from "axios";
+    import * as rax from "retry-axios";
 
     const query = `
     query getHome {
@@ -63,40 +64,54 @@
 
 
     `;
-  
-      export async function load({} ) {
-      const response = await fetch("https://mdsmx.xyz/fuga/graphql", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query }),
-      });
-  
-          if (response.ok) {
-        const responseObj = await response.json();
-        const quienesSomos = responseObj.data.pageBy.home.quienesSomos;
-        //const videoHome = responseObj.data.pageBy.home.videoHome.mediaItemUrl;
-        //const videoPoster = responseObj.data.pageBy.home.videoPoster.mediaItemUrl;
-        const testimonios = responseObj.data.pageBy.testimonios.testimonio;
-        const sponsors = responseObj.data.pageBy.sponsors.sponsors;
-        const content = responseObj.data.pageBy.content;
-  
-              return {
-                  props: {
-                      quienesSomos,
-                      content,
-                      testimonios,
-                      sponsors,
-                  }
-              };
+export async function load() {
+  let responseObj;
+  const interceptorId = rax.attach();
+  const response = await axios({
+    url: 'https://mdsmx.xyz/fuga/graphql',
+    method: 'post',
+    data: {
+      query: query,
+    },
+    raxConfig: {
+      retry: 3,
+      retryDelay: 5000,
+      onRetryAttempt: err => {
+      return new Promise((resolve, reject) => {
+        // call a custom asynchronous function
+        refreshToken(err, function(token, error) {
+          if (!error) {
+            window.localStorage.setItem('token', token);
+            resolve();
+            console.log('yes');
+          } else {
+            reject();
+            console.log('no');
           }
+        });
+      });
+    }
+    },
+  })
   
-          return {
-              status: response.status,
-              error: new Error(`Could not load ${url}`)
-          };
+  
+  responseObj=response.data;
+  const quienesSomos = responseObj.data.pageBy.home.quienesSomos;
+  const testimonios = responseObj.data.pageBy.testimonios.testimonio;
+  const sponsors = responseObj.data.pageBy.sponsors.sponsors;
+  const content = responseObj.data.pageBy.content;
+ 
+   return {
+      props: {
+          quienesSomos,
+          content,
+          testimonios,
+          sponsors,
       }
+    };
+
+}
+  
 </script>
 
 <script>
@@ -105,6 +120,7 @@
     export let content;
     export let testimonios;
     export let sponsors;
+
 
     let VideoPlayer
     let fecha = new Date();

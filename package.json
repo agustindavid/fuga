@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
-    "@sveltejs/adapter-netlify": "^1.0.0-next.45",
-    "@sveltejs/adapter-static": "^1.0.0-next.26",
+    "@sveltejs/adapter-netlify": "^1.0.0-next.56",
+    "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
     "autoprefixer": "^10.4.2",
     "eslint": "^7.32.0",
@@ -31,6 +31,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@wordpress/block-library": "^6.0.18"
+    "@wordpress/block-library": "^6.0.18",
+    "axios": "^0.27.2",
+    "retry-axios": "^2.6.0"
   }
 }
