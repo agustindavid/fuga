@@ -62,8 +62,9 @@
   }
 }
 
-
     `;
+
+let isLoading = true;
 export async function load() {
   let responseObj;
   const interceptorId = rax.attach();
@@ -92,14 +93,17 @@ export async function load() {
       });
     }
     },
-  })
-  
-  
+  });
+
+if(response.status == 200) {
+  console.log(response.status);
+
   responseObj=response.data;
   const quienesSomos = responseObj.data.pageBy.home.quienesSomos;
   const testimonios = responseObj.data.pageBy.testimonios.testimonio;
   const sponsors = responseObj.data.pageBy.sponsors.sponsors;
   const content = responseObj.data.pageBy.content;
+  isLoading=false;
  
    return {
       props: {
@@ -109,6 +113,13 @@ export async function load() {
           sponsors,
       }
     };
+} else {
+  console.log('error');
+  location.reload();
+  return {
+    isLoading: true,
+  }
+}
 
 }
   
@@ -143,6 +154,7 @@ export async function load() {
 
 <SEO {...seoProps} />
 
+{#if !(isLoading)}
 
     <Intro/>
 
@@ -151,29 +163,27 @@ export async function load() {
         <Who cta={quienesSomos.cta} texto={quienesSomos.texto} titulo={quienesSomos.titulo} urlImagen={quienesSomos.imagen}/>
       </div>
 
-    <div class=" bg-gray-50 ">  
-      <div class="container mx-auto py-12 md:px-16 px-8">
-        <!-- <svelte:component this={VideoPlayer} poster={videoPoster} source={videoHome} /> -->
-        <div style="padding:56.25% 0 0 0;position:relative;">
-          <iframe title="video" src="https://player.vimeo.com/video/685761108?h=afbad10175" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-          </iframe>
+      <div class=" bg-gray-50 ">  
+        <div class="container mx-auto py-12 md:px-16 px-8">
+          <!-- <svelte:component this={VideoPlayer} poster={videoPoster} source={videoHome} /> -->
+          <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe title="video" src="https://player.vimeo.com/video/685761108?h=afbad10175" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+            </iframe>
+          </div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
         </div>
-        <script src="https://player.vimeo.com/api/player.js"></script>
       </div>
-    </div>
 
-    <div class="container mx-auto">
-        <div class="my-16 text-black" >
-          {@html content}
-        </div>
-    </div>
-
+      <div class="container mx-auto">
+          <div class="my-16 text-black" >
+            {@html content}
+          </div>
+      </div>
 
       <div class=" bg-gray-50 text-gray-800 py-16 bg-center">
-        
-      <div class="container mx-auto mt-4">
-        <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium px-4">Historias Fuga</h2>
-      </div>
+        <div class="container mx-auto mt-4">
+          <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium px-4">Historias Fuga</h2>
+        </div>
         <div class="container mx-auto md:px-16 px-4">
           <Carousel slides={testimonios} type="testimony"/>
         </div>
@@ -223,12 +233,21 @@ export async function load() {
           </div>
         </div>
       </div>
+
+
       <footer class=" ">
         <div class="flex flex-wrap justify-center text-center py-8 text-white bg-fuga-pink w-full">
           <h4>Fuga Ciclismo Inteligente {fecha.getFullYear()}</h4>
         </div>
       </footer>
     </div>
+
+    {:else}
+
+    Cargando
+
+    {/if}
+
 
 <style>
   .foreground {

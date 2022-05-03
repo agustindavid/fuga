@@ -13,6 +13,10 @@ body {
     font-family: "Source Sans Pro", sans-serif;
 }
 
+.wp-block-column {
+    padding: 0 15px;
+}
+
 .content-wrap p {
     margin: 1.5rem 0;
 }

@@ -1,4 +1,6 @@
 import { writable } from "svelte/store";
+import axios from "axios";
+import * as rax from "retry-axios";
 
 export const blogPosts = writable([]);
 let loaded = false;
@@ -30,29 +32,30 @@ query getPosts {
 
 
 export const fetchPosts = async () => {
-  try {
+  const interceptorId = rax.attach();
+  console.log(interceptorId);
     if (loaded) return;
 
-      const response = await fetch("https://mdsmx.xyz/fuga/graphql", {
+      const response = await axios({
+        url : 'https://mdsmx.xyz/fuga/graphql',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query }),
+        data: {
+          query: query,
+        },
       });
 
+if(response.status == 200) {
   
-  
-      if(response.ok) {
-        const responseObj = await response.json();
+        const responseObj = await response.data;
         const loadedPosts = responseObj.data.posts.nodes;
-    //console.log(loadedPosts);
         blogPosts.set(loadedPosts)
         loaded = true;
-      }
-    } catch {
-      return;
-    }
-
+      
+} else {
+  console.log('error');
+}
       }
 fetchPosts();
