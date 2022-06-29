@@ -16,12 +16,14 @@ const config = {
       entries: ['*']
     },
     vite: {
-      plugins: [isoImport()],
+      plugins: [
+        isoImport(),
+      ],
       resolve: {
-        dedupe: ["svelte"],
+        dedupe: ['svelte','@fullcalendar/common'],
       },
       optimizeDeps: {
-          include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep', 'svelte-carousel', 'svelte-video-player']
+          include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep', 'svelte-carousel', 'svelte-video-player', '@fullcalendar/common'],
       },
     },
 

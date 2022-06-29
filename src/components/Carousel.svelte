@@ -10,8 +10,6 @@ Carousel = module.default;
 
 export let slides;
 export let type;
-//console.log(type);
-//console.log(slides);
 </script>
 
 

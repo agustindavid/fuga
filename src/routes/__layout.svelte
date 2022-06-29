@@ -14,7 +14,7 @@
     import '../app.css';
     import PageTransition from "../components/PageTransition.svelte"; 
     import { onMount } from "svelte";
-    export let url;
+    import Analytics from "../components/Analytics.svelte";
 
     let ready = false;
     let fecha = new Date();
@@ -27,9 +27,11 @@
   <script src="https://kit.fontawesome.com/fb10955868.js" crossorigin="anonymous"></script>
 </svelte:head>
 
+<Analytics />
+
 <Nav/>
 
-<PageTransition {url}>
+<PageTransition>
     <slot></slot>
 </PageTransition>
 

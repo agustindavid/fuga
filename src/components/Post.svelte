@@ -6,7 +6,6 @@
             return size;
         }
     });
-    console.log(image);
 </script>
 
 <div class="group text-black hover:text-white">

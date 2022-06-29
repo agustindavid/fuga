@@ -99,6 +99,17 @@ body {
     font-size: 3rem;
 }
 
+.event-content {
+    padding: 2rem 0;
+}
+
+.event-content h2,
+.content-page h2 {
+    font-size: 2rem;
+    font-family: 'Ubuntu';
+    margin: 1.5rem 0;
+}
+
 @media screen and (max-width: 1024px) {
     .half-width {
         width: 100%;
@@ -107,8 +118,13 @@ body {
 
     .half-width h2 {
         line-height: 1.05;
+        font-size: 2rem;
     }
 
+    .has-large-font-size {
+        font-size: 2rem;
+    }    
+    
     .wp-block-media-text__media img {
         border-radius: 0;
         margin-bottom: 1.5rem;
@@ -121,4 +137,31 @@ body {
     .wp-block-media-text .wp-block-media-text__content {
         padding: 0 1rem !important;
     }
+n
+    .event-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .fc .fc-button {
+        font-size: 0.6rem !important;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 0.9rem !important;
+    }
+
 }
+
+.fc-daygrid-event {
+    white-space: normal !important;
+}
+
+
+.bio-content p {
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+

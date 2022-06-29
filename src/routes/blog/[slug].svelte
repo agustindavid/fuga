@@ -1,58 +1,101 @@
 
 <script context="module">
     import SEO from "../../components/SEO/index.svelte"
+    import { variables } from "../../api/variables";
+    import axios from "axios";
+    import axiosRetry from 'axios-retry';
 
+    let isLoading = true;
+    let serverDown=true;
 
-       export async function load({ url, params } ) {
+    export async function load({ url, params } ) {
+    axiosRetry(axios, {
+        retries: 3, // number of retries
+        retryDelay: (retryCount) => {
+            console.log(`retry attempt: ${retryCount}`);
+            return retryCount * 2000; // time interval between retries
+        },
+        retryCondition: (error) => {
+            // if retry condition is not specified, by default idempotent requests are retried
+        },
+    });
 
-        const slug= params.slug;
-        
-
-        const query = `
-            query getPost {
-                postBy(slug: "${slug}") {
-                    title
-                    content
-                    featuredImage {
-                        node {
-                            mediaItemUrl
-                            mediaDetails {
-                                sizes {
-                                    sourceUrl
-                                    name
-                                }
+    const slug= params.slug;
+    let responseObj;
+    
+    const query = `
+        query getPost {
+            postBy(slug: "${slug}") {
+                title
+                content
+                excerpt
+                date
+                featuredImage {
+                    node {
+                        mediaItemUrl
+                        mediaDetails {
+                            sizes {
+                                sourceUrl
+                                name
                             }
                         }
                     }
                 }
             }
-            `;
+        }
+        `;
 
-         const response = await fetch("https://mdsmx.xyz/fuga/graphql", {
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/json',
-           },
-           body: JSON.stringify({ query }),
-         });
-     
-             if (response.ok) {
-               const responseObj = await response.json();
-               const post = responseObj.data.postBy;
-     
-                 return {
-                     props: {
-                         post,
-                         slug,
-                     }
-                 };
-             }
-     
-             return {
-                 status: response.status,
-                 error: new Error(`Could not load ${url}`)
-             };
-         }
+        try {
+            const response = await axios({ 
+            url: variables.basePath,
+            method: 'POST',
+            timeout: 9000,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {
+                query: query,
+            },
+            });
+        
+            responseObj = await response.data;
+            if (responseObj.data.postBy) {
+                const post = responseObj.data.postBy;
+                isLoading=false;
+                serverDown=false;
+                
+                return {
+                    props: {
+                        post,
+                        slug,
+                    }
+                };
+            } else {
+                return {
+                    props: {
+                        isLoading,
+                    }
+                }
+            }
+        }catch(error){
+                console.log(error);
+                console.log(error.code)
+                if(error.code=='ECONNABORTED') {
+                    console.log('aja');
+                    return {
+                        props: {
+                            serverDown,
+                            isLoading,
+                        }
+                    }
+                }
+                return {
+                    props: {
+                    isLoading,
+                    }
+                }
+            }
+        }
    </script>
 
    
@@ -74,15 +117,28 @@
     console.log(post)
 
     let title = post.title;
+    let metadescription=post.excerpt;
+    let datePublished=post.date;
+
+    metadescription = metadescription.replace(/(<([^>]+)>)/gi, "");
+
 
 
 const seoProps = {
 title,
 slug,
+metadescription,
+datePublished,
 };
 </script>
 
-<SEO {...seoProps} />
+<SEO
+  article
+  {title}
+  {metadescription}
+  {datePublished}
+/>
+
 
 <div class="container mx-auto mb-8 mt-24 px-4 lg:px-8 xl:px-8 2xl:px-8">
     <!-- <img class="w-100 rounded-2xl object-cover " src="{image[0].sourceUrl}" alt=""> -->
@@ -90,7 +146,7 @@ slug,
         <div class=" md:basis-8/12 basis-8/12">
             {#if post.featuredImage}
                 <div class="overflow-hidden lg:rounded-tr-none rounded-tr-xl rounded-t-xl lg:rounded-l-xl  h-full">
-                    <img class=" transition object-cover h-full  duration-300 group-hover:scale-105" src="{image[0].sourceUrl}" alt="">
+                    <img class="w-full transition object-cover duration-300 group-hover:scale-105" src="{image[0].sourceUrl}" alt="">
                 </div>   
             {/if}
         </div>

@@ -10,6 +10,7 @@
     //export let posts;
 
     let title = 'Blog';
+    
 
 
 const seoProps = {

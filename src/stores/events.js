@@ -4,37 +4,48 @@ import { variables }  from '../api/variables';
 import axiosRetry from 'axios-retry';
 
 
-
-export const blogPosts = writable([]);
-let loaded = false;
+export const events = writable([]);
+export let loaded = false;
 
 const query = `
-query getPosts {
- posts {
-   nodes {
-     id
-     slug
-     title
-     featuredImage {
-       node {
-         mediaItemUrl
-         mediaDetails {
-           sizes {
-             sourceUrl
-             name
-           }
-         }
-       }
-     }
-   }
- }
+query getEvents {
+  events {
+    nodes {
+      title
+      slug
+      eventsfields {
+        startDate
+        endDate
+        ubicacion
+        distancia
+        altimetria
+      }
+      eventTypes {
+        nodes {
+          name
+        }
+      }
+      featuredImage {
+        node {
+          mediaItemUrl
+          mediaDetails {
+            sizes {
+                sourceUrl
+                name
+            }
+          }
+        }
+      }
+    }
+  }
 }
 `;
 
 
 
 
-export const fetchPosts = async () => {
+export const fetchEvents = async () => {
+
   axiosRetry(axios, {
     retries: 3, // number of retries
     retryDelay: (retryCount) => {
@@ -46,10 +57,11 @@ export const fetchPosts = async () => {
       console.log(error);
     },
   })
+
     if (loaded) return;
     try {
       const response = await axios({
-        url : variables.basePath,
+        url : variables.basePath, 
         method: 'POST',
         timeout: 9000,
         headers: {
@@ -60,13 +72,14 @@ export const fetchPosts = async () => {
         },
       });
 
-  
-        const responseObj = await response.data;
-        const loadedPosts = responseObj.data.posts.nodes;
-        blogPosts.set(loadedPosts)
-        loaded = true;
+      const responseObj = await response.data;
+      const loadedEvents = responseObj.data.events.nodes;
+      //console.log(loadedEvents);
+      events.set(loadedEvents);
+      loaded = true;  
     } catch(error) {
       console.log(error);
-      }
     }
-fetchPosts();
+
+}
+fetchEvents();

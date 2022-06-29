@@ -9,7 +9,7 @@
 
     const query = `
     query getHome {
-        pageBy(uri: "how-it-works") {
+        pageBy(uri: "reto-fuga-2022") {
             id
             title
             content
@@ -91,7 +91,7 @@ import Arrow from "svelte-carousel/src/components/Arrow/Arrow.svelte";
 import About from "./about.svelte";
 
     export let content;
-    let title = 'Cómo Funciona'
+    let title = 'Reto Fuga 2022'
 
     const seoProps= {
         title,
@@ -102,14 +102,16 @@ import About from "./about.svelte";
 
 {#if !(isLoading)}
 
+<div class="reto-fuga-wrap">
 
-<div class="container mx-auto">
-    <h2 class="font-ubuntu text-2xl md:text-6xl text-fuga-pink font-medium px-4 md:px-0  lg:w-3/5 lg:my-20 mt-20 mb-8">
-        Entrenamientos y planes alimenticios personalizados, basados en análisis y enfocados en lograr objetivos.
-    </h2>
+    <div class="container mx-auto px-4">
+        <h2 class="font-ubuntu text-2xl md:text-6xl text-fuga-pink font-medium px-4 md:px-0  lg:w-3/5 lg:my-20 mt-20 mb-8">
+            Reto Fuga 2022
+        </h2>
 
-    <div>
-        {@html content}
+        <div class="content-page">
+            {@html content}
+        </div>
     </div>
 
 </div>
@@ -121,4 +123,10 @@ import About from "./about.svelte";
 </div>
 
 {/if}
+
+<style>
+    .reto-fuga-wrap {
+        font-size: 1.3rem;
+    }
+</style>
 

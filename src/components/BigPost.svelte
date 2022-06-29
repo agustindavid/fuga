@@ -7,14 +7,13 @@
             return size;
         }
     });
-    console.log(image);
 </script>
 
 <div class="flex flex-col lg:flex-row group text-black hover:text-white">
     <div class=" md:basis-9/12 basis-8/12">
         {#if post.featuredImage}
             <div class="overflow-hidden lg:rounded-tr-none rounded-tr-xl rounded-t-xl lg:rounded-l-xl  h-full">
-                <a href="/blog/{post.slug}"><img class=" transition object-cover h-full  duration-300 group-hover:scale-105" src="{image[0].sourceUrl}" alt=""></a>
+                <a href="/blog/{post.slug}"><img class=" transition object-cover duration-300 group-hover:scale-105" src="{image[0].sourceUrl}" alt=""></a>
             </div>   
         {/if}
     </div>
