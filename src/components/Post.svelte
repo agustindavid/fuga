@@ -1,5 +1,6 @@
 <script>
     export let post;
+    console.log(post)
     export let sizes=post.featuredImage.node.mediaDetails.sizes;
     const image = sizes.filter(function(size){
         if(size.name=='post-image'){

@@ -24,21 +24,15 @@
     let responseObj;
     
     const query = `
-        query getPost {
-            postBy(slug: "${slug}") {
+        query getStory {
+            storyBy(slug: "agustin-navarro") {
                 title
                 content
-                excerpt
                 date
+                excerpt
                 featuredImage {
                     node {
                         mediaItemUrl
-                        mediaDetails {
-                            sizes {
-                                sourceUrl
-                                name
-                            }
-                        }
                     }
                 }
             }
@@ -58,9 +52,10 @@
             },
             });
         
+            console.log(response);
             responseObj = await response.data;
-            if (responseObj.data.postBy) {
-                const post = responseObj.data.postBy;
+            if (responseObj.data.storyBy) {
+                const post = responseObj.data.storyBy;
                 isLoading=false;
                 serverDown=false;
                 
@@ -103,12 +98,14 @@
 
    
     export let post;
-    export let sizes=post.featuredImage.node.mediaDetails.sizes;
-    const image = sizes.filter(function(size){
+    //export let sizes=post.featuredImage.node.mediaDetails.sizes;
+    /* const image = sizes.filter(function(size){
         if(size.name=='single-post-image'){
             return size;
         }
-    });
+    }); */
+
+    const image = post.featuredImage.node.mediaItemUrl;
     export let slug;
 
 
@@ -117,11 +114,10 @@
     console.log(post)
 
     let title = post.title;
-    let metadescription=post.excerpt;
+    let metadescription=post.excerpt.replace(/(<([^>]+)>)/gi, "");
     let datePublished=post.date;
 
-    metadescription = metadescription.replace(/(<([^>]+)>)/gi, "");
-    console.log(post.content);
+
 
 
 const seoProps = {
@@ -140,28 +136,26 @@ datePublished,
 />
 
 
-<div class="container mx-auto mb-8 md:h-screen-60 mt-24 px-4 lg:px-8 xl:px-8 2xl:px-8">
+<div class="mx-auto container mb-8 md:h-screen-80 mt-24 px-4 lg:px-0 xl:px-0 2xl:px-0">
     <!-- <img class="w-100 rounded-2xl object-cover " src="{image[0].sourceUrl}" alt=""> -->
-    <div class="flex flex-col h-full overflow-hidden lg:flex-row group text-black hover:text-white">
-        <div class=" md:basis-8/12 basis-8/12">
-            {#if post.featuredImage}
-                <div class="overflow-hidden lg:rounded-tr-none rounded-tr-xl rounded-t-xl lg:rounded-l-xl  h-full">
-                    <img class="w-full h-full object-center transition object-cover duration-300 group-hover:scale-105" src="{image[0].sourceUrl}" alt="">
-                </div>   
-            {/if}
+    <div class="flex flex-col h-full overflow-hidden lg:flex-row group text-white hover:text-white bg-fuga-blue">
+        <div class=" md:basis-6/12 basis-6/12">
+            <img class="w-full h-full object-cover object-center" src="{image}" alt="">
         </div>
-        <div class="basis-4/12 md:basis-4/12 lg:h-full flex content-center justify-center flex-col border-0 border-slate-500 lg:border-l-0 group-hover:bg-opacity-100 transition duration-300 bg-opacity-5 p-4 bg-fuga-pink rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none">     
-            <h2 class="font-ubuntu text-4xl">{post.title}</h2>
-            {#if post.excerpt}
-                <div class=" text-2xl ">
-                    {@html post.excerpt}
-                </div>
-            {/if}
+        <div class="basis-6/12 md:basis-6/12 lg:h-full flex content-center justify-center flex-col group-hover:bg-opacity-100 transition duration-300 p-8 bg-fuga-blue relative lg:overflow-hidden">
+            <div class=" absolute w-20 h-20 lg:bg-white opacity-30 group-hover:w-28 group-hover:-left-14 group-hover:-top-14 group-hover:h-28 transition-all -left-10 rounded-full -top-10"></div>
+            <div class=" absolute w-20 h-20 lg:bg-white opacity-30 group-hover:w-28 group-hover:-right-14 group-hover:-top-14 group-hover:h-28 transition-all -right-10 rounded-full -top-10"></div>
+            <div class=" absolute w-20 h-20 lg:bg-white opacity-30 group-hover:w-28 group-hover:-right-14 group-hover:-bottom-14 group-hover:h-28 transition-all -right-10 rounded-full -bottom-10"></div>
+            <div class=" absolute w-20 h-20 lg:bg-white opacity-30 group-hover:w-28 group-hover:-left-14 group-hover:-bottom-14 group-hover:h-28 transition-all -left-10  rounded-full -bottom-10"></div>  
+            <h2 class="font-ubuntu text-3xl text-white">{post.title}</h2>
+            <div class="text-xl mt-8">
+                {@html post.excerpt}
+            </div>
         </div>
     </div>
 </div>
-<div class="container mx-auto content-wrap px-4 lg:px-16 xl:px-16 2xl:px-32">
+<div class="container mx-auto content-wrap px-4 lg:px-8 xl:px-0 2xl:px-0">
     <div class=" w-100 md:w3/4 md:px-16 leading-8 mx-auto  text-xl">
-        {@html post.content}
+        {@html post.content}        
     </div>
 </div>

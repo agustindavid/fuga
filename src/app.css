@@ -8,9 +8,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --scrollbar-width: calc(100vw - 100%);
+  }
+  
+
 
 body {
     font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
 }
 
 .wp-block-column {
@@ -18,7 +24,16 @@ body {
 }
 
 .content-wrap p {
-    margin: 1.5rem 0;
+    margin: 1.5rem auto;
+    width: 80%;
+}
+
+.content-wrap h2 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    width: 80%;
+    margin: 1rem auto;
+    font-family: 'Ubuntu';
 }
 
 .wp-block-gallery .blocks-gallery-image img, .wp-block-gallery .blocks-gallery-item img, .blocks-gallery-grid .blocks-gallery-image img, .blocks-gallery-grid .blocks-gallery-item img {
@@ -79,17 +94,18 @@ body {
     line-height: 1.8;
 }
 
-.full-width-img {
-    width: 100vw;
+.full-width-image {
+    width: 98vw;
     position: relative;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    margin-left: -49vw;
+    margin-right: -49vw;
     left: 50%;
     right: 50%;
-    transform: translateX(-9px);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.full-width-img img {
+.full-width-image img {
     border-radius: 0 !important;
     width: 100%;
     height: auto;
@@ -111,6 +127,17 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
+
+    .content-wrap p {
+        margin: 1.5rem auto;
+        width: 90%;
+    }
+
+    .content-wrap h2 {
+        font-size: 2rem;
+        width: 90%;
+    }
+
     .half-width {
         width: 100%;
         padding: 0 15px;

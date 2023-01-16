@@ -155,21 +155,78 @@ export async function load() {
           </div>
       </div>
 
-      <div class=" bg-gray-50 text-gray-800 py-16 bg-center">
+      <div class=" bg-white text-gray-800 py:8 md:py-16 bg-center hidden">
         <div class="container mx-auto mt-4">
-          <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium px-4">Historias Fuga</h2>
+          <h2 class="font-ubuntu text-3xl lg:text-5xl text-fuga-pink mb-8 font-medium px-4">Historias Fuga</h2>
         </div>
         <div class="container mx-auto md:px-16 px-4">
           <Carousel slides={testimonios} type="testimony"/>
         </div>
       </div>
 
-      <div class=" bg-gray-50 text-gray-800 py-16 bg-center">
+      <div class=" bg-gray-50 text-gray-800 py-8  bg-center">
         <div class="container mx-auto mt-4">
-          <h2 class="font-ubuntu text-6xl text-fuga-pink mb-8 font-medium px-4">Eventos destacados</h2>
+          <h2 class="font-ubuntu text-3xl lg:text-5xl text-fuga-pink mb-8 font-medium px-4">Servicios y Paquetes</h2>
         </div>
         <div class="container mx-auto md:px-16 px-4">
-          <EventsList events={$events} limit="3" />
+          <!-- <EventsList events={$events} limit="3" /> -->
+          <div class="overflow-auto">
+            <table class=" table-auto ">
+              <thead>
+                <tr>
+                  <th>Servicios incluidos</th>
+                  <th>Pro</th>
+                  <th>Sport</th>
+                  <th>Fit</th>
+                  <th>Wellness</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class=" bg-slate-50 ">
+                  <td class="text-left">Training Peaks</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class=" bg-slate-200 ">
+                  <td class="text-left">Salidas a carretera</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr class=" bg-slate-50 ">
+                  <td class="text-left">Seguimiento nutricional</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td></td>
+                </tr>
+                <tr class=" bg-slate-200 ">
+                  <td class="text-left">Entrenamiento funcional</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                </tr>
+                <tr class=" bg-slate-50 ">
+                  <td class="text-left">Uso de rodillos</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td class=" text-green-700 check">✓</td>
+                </tr>
+                <tr class=" bg-slate-200 ">
+                  <td class="text-left">Masaje deportivo</td>
+                  <td class=" text-green-700 check">✓</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -185,7 +242,7 @@ export async function load() {
       {/each}
  -->      
       <div class="container mx-auto my-16 px-4  ">
-        <h1 class="font-ubuntu content-center text-6xl font-medium text-fuga-pink mt-16 mb-2" >Blog</h1>
+        <h1 class="font-ubuntu content-center text-3xl lg:text-5xl font-medium text-fuga-pink mt-16 mb-8" >Blog</h1>
         <div class=" -mx-4 md:px-16  ">
           <PostsList posts={$blogPosts} type="" limit="3"/>
         </div>
@@ -194,7 +251,7 @@ export async function load() {
         </div>
       </div>
       
-      <div class="sponsors bg-gray-100  text-center text-gray-700 mt-16  py-16 text-6xl">
+      <div class="sponsors bg-gray-100  text-center text-gray-700 mt-16  py-16 text-3xl lg:text-5xl">
         <h2 class=" font-ubuntu font-medium text-5xl text-fuga-pink mb-16">Nuestros patrocinantes:</h2>
         <div class="container mx-auto">
           <div class="flex flex-wrap flex-row items-center">
@@ -247,5 +304,44 @@ export async function load() {
     position: absolute;
     width: 100%;
     background-color: white;
+  }
+
+  table {
+    margin: auto;
+  }
+
+  th {
+    background: #e50d4e;
+    color: #fff;
+    font-size: 1.6rem;
+    font-family: 'Ubuntu';
+    font-weight: 100;
+    padding: 0.5rem 1rem;
+  }
+
+  td {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  td.text-left {
+    text-align: left !important;
+  }
+
+  td.check {
+    font-size: 1.5rem !important;
+  }
+
+  @media screen and (max-width:767px) {
+    th {
+      font-size: 1.2rem;
+      padding: 0.2rem 0.5rem;
+    }
+
+    td {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+  }
   }
 </style>
